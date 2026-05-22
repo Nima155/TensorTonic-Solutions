@@ -1,0 +1,14 @@
+import pandas as pd
+
+def inspect_dataframe(data):
+    """
+    Returns: dict with 'rows', 'cols' (ints), 'columns' (list),
+    'dtypes' (dict), 'total_values' (int)
+    """
+    df = pd.DataFrame(data)
+
+    return {
+        "rows": df.shape[0], "cols": df.shape[1], 
+        "columns": df.columns.tolist(), "dtypes": {k:v.name for k,v in df.dtypes.to_dict().items()},
+        "total_values": df.size 
+    }
