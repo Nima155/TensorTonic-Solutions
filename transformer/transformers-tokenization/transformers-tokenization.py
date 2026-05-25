@@ -10,11 +10,6 @@ class SimpleTokenizer:
         self.word_to_id: Dict[str, int] = {}
         self.id_to_word: Dict[int, str] = {}
         self.vocab_size = 4
-        # Special tokens
-        self.pad_token = "<PAD>"
-        self.unk_token = "<UNK>"
-        self.bos_token = "<BOS>"
-        self.eos_token = "<EOS>"
     
     def build_vocab(self, texts: List[str]) -> None:
         """
@@ -32,6 +27,7 @@ class SimpleTokenizer:
                     self.word_to_id[t] = self.vocab_size
                     self.id_to_word[self.vocab_size] = t
                     self.vocab_size += 1
+                
         self.word_to_id["<PAD>"] = 0
         self.word_to_id["<UNK>"] = 1
         self.word_to_id["<BOS>"] = 2
